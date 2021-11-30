@@ -10,7 +10,7 @@
 
 
 
-import React from 'react';
+import React, { Fragment } from 'react';
 import { View, Text } from 'react-native';
 
 
@@ -19,9 +19,9 @@ import { View, Text } from 'react-native';
 
 const  HzBar = (props) =>{
   return(
-    <View>
-      <Text>{`${props.tabText}`}</Text>
-    </View>
+      <Fragment>
+        <Text>{`${props.tabText}`}</Text>
+      </Fragment>
   )
 }
 
