@@ -10,17 +10,22 @@
 
 
 
-import React, { Fragment } from 'react';
-import { View, Text } from 'react-native';
+import React, { Fragment, useState } from 'react';
+import { View, Text, Button } from 'react-native';
 
 
 
 
 
 const  HzBar = (props) =>{
+  let [isPressed, setIsPressed] = useState(false);
+  
+  
   return(
       <Fragment>
         <Text>{`${props.tabText}`}</Text>
+        <Button onPress={()=>{setIsPressed(true)}} 
+        title={isPressed ? `${"Thank you Bro :)"}` : `${"Click here"}`}/>
       </Fragment>
   )
 }
