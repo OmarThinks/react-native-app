@@ -11,12 +11,18 @@
 
 
 import React, { Fragment, useState } from 'react';
-import { View, Text, Button, TextInput, LogBox } from 'react-native';
+import { View, Text, Button, TextInput, LogBox, ScrollView, Image } from 'react-native';
 
 
 
 var data = "";
 
+
+const logo = {
+  uri: 'https://reactnative.dev/img/tiny_logo.png',
+  width: 64,
+  height: 64
+};
 
 
 const UserName = () =>{
@@ -37,10 +43,26 @@ const UserName = () =>{
 
 const App = () => {
   return (
-    <View>
-      <UserName></UserName>
+    <ScrollView>
+      <UserName/>
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
+      <Image source={logo} />
       <Text>{`${data}`}</Text>
-    </View>
+    </ScrollView>
   );
 }
 
