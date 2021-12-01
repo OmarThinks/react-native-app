@@ -11,22 +11,24 @@
 
 
 import React, { Fragment, useState } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TextInput } from 'react-native';
 
 
 
+var data = "";
 
 
-const  HzBar = (props) =>{
-  let [isPressed, setIsPressed] = useState(false);
-  
-  
-  return(
-      <Fragment>
-        <Text>{`${props.tabText}`}</Text>
-        <Button onPress={()=>{setIsPressed(true)}} 
-        title={isPressed ? `${"Thank you Bro :)"}` : `${"Click here"}`}/>
-      </Fragment>
+
+const UserName = () =>{
+  let [text, setText] = useState("");
+
+  return (
+    <TextInput
+      style={{backgroundColor:"cyan"}}
+      placeholder='Username'
+      onChange={(something)=>{console.log(something);}}
+      defaultValue={text}
+    />
   )
 }
 
@@ -36,11 +38,8 @@ const  HzBar = (props) =>{
 const App = () => {
   return (
     <View>
-      <Text>Hello, World!</Text>
-      <HzBar tabText={`${"Message 1"}`} />
-      <HzBar tabText={`${"Message 2"}`} />
-      <HzBar tabText={`${"Message 3"}`} />
-
+      <UserName></UserName>
+      <Text>{`${data}`}</Text>
     </View>
   );
 }
