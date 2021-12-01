@@ -11,7 +11,7 @@
 
 
 import React, { Fragment, useState } from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, Button, TextInput, LogBox } from 'react-native';
 
 
 
@@ -20,13 +20,13 @@ var data = "";
 
 
 const UserName = () =>{
-  let [text, setText] = useState("");
+  let [text, setText] = useState("abcdefg");
 
   return (
     <TextInput
       style={{backgroundColor:"cyan"}}
       placeholder='Username'
-      onChange={(something)=>{console.log(something);}}
+      onChangeText={text=>{setText(text); console.log(text);}}
       defaultValue={text}
     />
   )
