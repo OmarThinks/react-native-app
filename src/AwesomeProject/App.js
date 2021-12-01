@@ -11,7 +11,7 @@
 
 
 import React, { Fragment, useState } from 'react';
-import { View, Text, Button, TextInput, LogBox, ScrollView, Image } from 'react-native';
+import { View, Text, Button, TextInput, LogBox, ScrollView, Image, FlatList } from 'react-native';
 
 
 
@@ -43,26 +43,20 @@ const UserName = () =>{
 
 const App = () => {
   return (
-    <ScrollView>
+    <Fragment>
+
       <UserName/>
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
-      <Image source={logo} />
+      
+
       <Text>{`${data}`}</Text>
-    </ScrollView>
+
+      <FlatList 
+        data={[1,2,3,4,5,6,7,8]}
+        renderItem={item=>{console.log(item);return(<Text>{`${item.item}`}</Text>);}}
+      />
+
+
+    </Fragment>
   );
 }
 
