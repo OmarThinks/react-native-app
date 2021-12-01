@@ -11,11 +11,21 @@
 
 
 import React, { Fragment, useState } from 'react';
-import { View, Text, Button, TextInput, LogBox, ScrollView, Image, FlatList } from 'react-native';
+import { View, Text, Button, TextInput, LogBox, ScrollView, Image, FlatList, StyleSheet } from 'react-native';
 
 
 
 var data = "";
+
+const styles = StyleSheet.create(
+  {
+    container:{padding: "5%"},
+    big:{ fontSize: 60},
+    small:{fontSize: 20},
+    red:{ color:"red" },
+    blue:{ color: "blue"}
+}
+);
 
 
 const logo = {
@@ -48,12 +58,11 @@ const App = () => {
       <UserName/>
       
 
-      <Text>{`${data}`}</Text>
+      <View style={[styles.container]}>
+      <Text style={[styles.big, styles.red]}>Hi!</Text>
+      <Text style={[styles.small, styles.blue]}>Hi!</Text>
+      </View>
 
-      <FlatList 
-        data={[1,2,3,4,5,6,7,8]}
-        renderItem={item=>{console.log(item);return(<Text>{`${item.item}`}</Text>);}}
-      />
 
 
     </Fragment>
