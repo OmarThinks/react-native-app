@@ -14,8 +14,12 @@ import React, { Fragment, useState } from 'react';
 import { View, Text, Button, TextInput, LogBox, ScrollView, Image, FlatList, StyleSheet } from 'react-native';
 
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+const Stack = createNativeStackNavigator();
 
-var data = "";
+
+
 
 const styles = StyleSheet.create(
   {
@@ -23,16 +27,12 @@ const styles = StyleSheet.create(
     big:{ fontSize: 60},
     small:{fontSize: 20},
     red:{ color:"red" },
-    blue:{ color: "blue"}
+    blue:{ color: "blue"},
+    redBackground:{backgroundColor:"red"}
 }
 );
 
 
-const logo = {
-  uri: 'https://reactnative.dev/img/tiny_logo.png',
-  width: 64,
-  height: 64
-};
 
 
 const UserName = () =>{
@@ -50,23 +50,60 @@ const UserName = () =>{
 
 
 
-
-const App = () => {
-  return (
+const HomeScreen = ({ navigation })=>{
+  return(
     <Fragment>
 
       <UserName/>
-      
-
-      <View style={[styles.container]}>
-      <Text style={[styles.big, styles.red]}>Hi!</Text>
-      <Text style={[styles.small, styles.blue]}>Hi!</Text>
-      </View>
-
-
+      <Button title='Submittttt' color="blue" onPress={()=>{navigation.navigate('DisplayMessage', { name: 'Jane' })}}/>
 
     </Fragment>
+  )
+}
+
+
+
+const DisplayMessageScreen = ( {navigation , route} )=>{
+  return(
+      <View>
+        <Text>{route.params.name}</Text>
+      </View>
   );
 }
+
+
+
+
+
+
+
+
+const App = () => {
+  return (
+    
+
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ title: 'Home' }}
+        />
+        <Stack.Screen
+            name="DisplayMessage"
+            component={DisplayMessageScreen}
+            options={{ title: 'Welcome' }}
+        />
+
+      </Stack.Navigator>
+
+
+    </NavigationContainer>
+
+        
+
+  );
+}
+
 
 export default App;
