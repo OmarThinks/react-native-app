@@ -23,6 +23,13 @@ To control the application in the emulator, **`ctrl + m`**
 
 
 
+# B) Screenshots:
+
+
+<img src="screenshots/1.png" width=270 height=480>  
+<img src="screenshots/2.png" width=270 height=480>  
+<img src="screenshots/3.png" width=270 height=480>  
+
 
 
 
