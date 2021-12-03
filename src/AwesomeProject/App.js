@@ -11,8 +11,8 @@
 
 
 import React, { Fragment, useState } from 'react';
-import { View, Text, Button, TextInput, LogBox, ScrollView, Image, FlatList, StyleSheet } from 'react-native';
-
+import { View, Text, Button, TextInput, LogBox, ScrollView, Image, FlatList, StyleSheet, TouchableWithoutFeedback } 
+from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -28,20 +28,21 @@ const styles = StyleSheet.create(
     small:{fontSize: 20},
     red:{ color:"red" },
     blue:{ color: "blue"},
-    redBackground:{backgroundColor:"red"}
+    redBackground:{backgroundColor:"red"},
+    mainView:{"padding":"5%", backgroundColor:"lightgrey", height:"100%", justifyContent:"center"}
 }
 );
 
 
 
 
-const UserName = () =>{
-  let [text, setText] = useState("abcdefg");
+const UserName = (props) =>{
+  let [text, setText] = [props.messageText, props.setMessageText];
 
   return (
     <TextInput
-      style={{backgroundColor:"cyan"}}
-      placeholder='Username'
+      style={{backgroundColor:"black", marginBottom:"5%", color:"white", fontSize:30, padding:10}}
+      placeholder='Your Name'
       onChangeText={text=>{setText(text); console.log(text);}}
       defaultValue={text}
     />
@@ -51,13 +52,23 @@ const UserName = () =>{
 
 
 const HomeScreen = ({ navigation })=>{
+  
+  const [messageText, setMessageText] = useState("");
+  
   return(
-    <Fragment>
+    <View style={[styles.mainView]}>
 
-      <UserName/>
-      <Button title='Submittttt' color="blue" onPress={()=>{navigation.navigate('DisplayMessage', { name: 'Jane' })}}/>
+      <UserName messageText ={messageText} setMessageText = {setMessageText}/>
 
-    </Fragment>
+
+    <TouchableWithoutFeedback>
+      <Text style={{ fontSize: 30, backgroundColor:"darkgreen", textAlign:"center", paddingVertical:"3%", color:"white", borderRadius:20 }} onPress={()=>{navigation.navigate('DisplayMessage', { name: messageText })}}
+      
+      >Say Hello!</Text>
+    </TouchableWithoutFeedback>
+
+
+    </View>
   )
 }
 
@@ -65,8 +76,8 @@ const HomeScreen = ({ navigation })=>{
 
 const DisplayMessageScreen = ( {navigation , route} )=>{
   return(
-      <View>
-        <Text>{route.params.name}</Text>
+      <View style={[styles.mainView]}>
+        <Text style={{ fontSize: 50, textAlign:"center",fontWeight:"bold" ,paddingVertical:"3%", color:"darkgreen", }} >{`Hello, ${route.params.name}!`}</Text>
       </View>
   );
 }
@@ -87,12 +98,29 @@ const App = () => {
         <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{ title: 'Home' }}
+            options={{ title: 'Home',
+            headerStyle: {
+              backgroundColor: 'darkgreen',
+              color:"white"
+            }, 
+            headerTintColor: 'white',
+          
+          }}
+            
         />
         <Stack.Screen
             name="DisplayMessage"
             component={DisplayMessageScreen}
-            options={{ title: 'Welcome' }}
+            options={{ title: 'Welcome',
+            headerStyle: {
+              backgroundColor: 'darkgreen',
+              color:"white",
+            }, 
+            headerTintColor: 'white',
+          
+          
+          
+          }}
         />
 
       </Stack.Navigator>
