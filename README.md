@@ -13,6 +13,13 @@ export NODE_OPTIONS=--openssl-legacy-provider
 npm start
 ```
 
+Open **another** commandline interface window, and run this command:
+
+```bash
+npx react-native run-android
+```
+
+
 Now, go the android studio, and run the application on the emulator.
 
 ## A-2) Debugging:
