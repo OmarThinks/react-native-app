@@ -3,8 +3,7 @@ Getting to learn react native
 
 
 
-# A) How to run:
-## A-1) Running the application:
+## A-1) Preparing react native:
 
 In the CLI, run this code:
 
@@ -13,6 +12,9 @@ export NODE_OPTIONS=--openssl-legacy-provider
 npm start
 ```
 
+## A-2) Running the application:
+
+
 Open **another** commandline interface window, and run this command:
 
 ```bash
@@ -20,9 +22,9 @@ npx react-native run-android
 ```
 
 
-Now, go the android studio, and run the application on the emulator.
+**OR** go the android studio, and run the application on the emulator.
 
-## A-2) Debugging:
+## A-3) Debugging:
 
 Run the application with React-Native Debugger.  
 To control the application in the emulator, **`ctrl + m`**
